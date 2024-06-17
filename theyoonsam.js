@@ -10,7 +10,7 @@ setInterval(function () {
   getWeatherLong2Data();
 
   console.log("1233");
-}, 10000);
+}, 1800000);
 
 function getWeatherData(params) {
   const now = new Date();
