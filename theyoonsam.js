@@ -8,8 +8,6 @@ setInterval(function () {
   getWeatherData();
   getWeatherLongData();
   getWeatherLong2Data();
-
-  console.log("1233");
 }, 1800000);
 
 function getWeatherData(params) {
@@ -140,10 +138,6 @@ function getWeatherData(params) {
   // } else if (2240 <= parseInt(timeIn) && parseInt(timeIn) < 2340) {
   //   time = "2200";
   // }
-  console.log(dateIn);
-  console.log(timeIn);
-  console.log(parseInt(timeIn));
-  console.log(time);
 
   var url =
     "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst"; /*URL*/
@@ -177,9 +171,6 @@ function getWeatherData(params) {
     "&" + encodeURIComponent("ny") + "=" + encodeURIComponent("90"); /**/
 
   $.getJSON(url + queryParams, function (data) {
-    console.log(data);
-    console.log(data.response.body.items);
-
     for (let i = 0; i < 6; i++) {
       let t1h_0 = data.response.body.items.item[24 + i].fcstValue;
       let rn1_0 = data.response.body.items.item[12 + i].fcstValue;
@@ -216,8 +207,6 @@ function getWeatherData(params) {
           skyReal01 = "cloud.png";
           break;
       }
-
-      console.log(pty_0);
 
       switch (parseInt(pty_0)) {
         case 1:
@@ -298,11 +287,6 @@ function getWeatherLongData(params) {
     time = "2000";
   }
 
-  console.log(dateIn);
-  console.log(timeIn);
-  console.log(parseInt(timeIn));
-  console.log(time);
-
   var url =
     "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"; /*URL*/
   var queryParams =
@@ -334,10 +318,7 @@ function getWeatherLongData(params) {
   queryParams +=
     "&" + encodeURIComponent("ny") + "=" + encodeURIComponent("90"); /**/
 
-  $.getJSON(url + queryParams, function (data) {
-    console.log(data);
-    console.log(data.response.body.items);
-  });
+  $.getJSON(url + queryParams, function (data) {});
 }
 function getWeatherLong2Data(params) {
   const now = new Date();
@@ -375,11 +356,6 @@ function getWeatherLong2Data(params) {
     time = "0600";
   }
 
-  console.log(dateIn);
-  console.log(timeIn);
-  console.log(parseInt(timeIn));
-  console.log(time);
-
   var url =
     "http://apis.data.go.kr/1360000/MidFcstInfoService/getMidFcst"; /*URL*/
   var queryParams =
@@ -408,9 +384,6 @@ function getWeatherLong2Data(params) {
     encodeURIComponent(dateIn + time); /**/
 
   $.getJSON(url + queryParams, function (data) {
-    console.log(data);
-    console.log(data.response.body.items);
-
     let conttyp = data.response.body.items.item[0].wfSv;
 
     $("#contwether").html(conttyp);
