@@ -13,19 +13,6 @@ setInterval(function () {
 function getWeatherData(params) {
   const now = new Date();
 
-  const dateIn0 = now.getFullYear();
-  let dateIn1 = now.getMonth() + 1;
-  let dateIn2 = now.getDate();
-
-  if (dateIn1 < 10) {
-    dateIn1 = "0" + dateIn1.toString();
-  }
-  if (dateIn2 < 10) {
-    dateIn2 = "0" + dateIn2.toString();
-  }
-
-  const dateIn = dateIn0.toString() + dateIn1.toString() + dateIn2.toString();
-
   let timeIn0 = now.getHours();
   let timeIn1 = now.getMinutes();
 
@@ -89,6 +76,22 @@ function getWeatherData(params) {
   } else if (2245 <= parseInt(timeIn) && parseInt(timeIn) < 2345) {
     time = "2230";
   }
+
+  const dateIn0 = now.getFullYear();
+  let dateIn1 = now.getMonth() + 1;
+  let dateIn2 = now.getDate();
+  if (parseInt(timeIn) < 45) {
+    dateIn2 = now.getDate() - 1;
+  }
+
+  if (dateIn1 < 10) {
+    dateIn1 = "0" + dateIn1.toString();
+  }
+  if (dateIn2 < 10) {
+    dateIn2 = "0" + dateIn2.toString();
+  }
+
+  const dateIn = dateIn0.toString() + dateIn1.toString() + dateIn2.toString();
   // if (parseInt(timeIn) < 40) {
   //   time = "2300";
   // } else if (40 <= parseInt(timeIn) && parseInt(timeIn) < 140) {
@@ -323,19 +326,6 @@ function getWeatherLongData(params) {
 function getWeatherLong2Data(params) {
   const now = new Date();
 
-  const dateIn0 = now.getFullYear();
-  let dateIn1 = now.getMonth() + 1;
-  let dateIn2 = now.getDate();
-
-  if (dateIn1 < 10) {
-    dateIn1 = "0" + dateIn1.toString();
-  }
-  if (dateIn2 < 10) {
-    dateIn2 = "0" + dateIn2.toString();
-  }
-
-  const dateIn = dateIn0.toString() + dateIn1.toString() + dateIn2.toString();
-
   let timeIn0 = now.getHours();
   let timeIn1 = now.getMinutes();
 
@@ -350,11 +340,33 @@ function getWeatherLong2Data(params) {
 
   let time = 0;
 
-  if (630 <= parseInt(timeIn) && parseInt(timeIn) < 1830) {
-    time = "1800";
-  } else {
-    time = "0600";
+  const dateIn0 = now.getFullYear();
+  let dateIn1 = now.getMonth() + 1;
+
+  let dateIn2 = now.getDate();
+  if (0 <= parseInt(timeIn) && parseInt(timeIn) < 630) {
+    dateIn2 = now.getDate() - 1;
   }
+
+  if (dateIn1 < 10) {
+    dateIn1 = "0" + dateIn1.toString();
+  }
+  if (dateIn2 < 10) {
+    dateIn2 = "0" + dateIn2.toString();
+  }
+
+  const dateIn = dateIn0.toString() + dateIn1.toString() + dateIn2.toString();
+
+  if (630 <= parseInt(timeIn) && parseInt(timeIn) < 1830) {
+    time = dateIn + "0600";
+  } else if (0 <= parseInt(timeIn) && parseInt(timeIn) < 630) {
+    time = dateIn + "1800";
+  } else {
+    time = dateIn + "1800";
+  }
+
+  console.log(dateIn);
+  console.log(time);
 
   var url =
     "http://apis.data.go.kr/1360000/MidFcstInfoService/getMidFcst"; /*URL*/
@@ -378,10 +390,7 @@ function getWeatherLong2Data(params) {
   queryParams +=
     "&" + encodeURIComponent("stnId") + "=" + encodeURIComponent("143"); /**/
   queryParams +=
-    "&" +
-    encodeURIComponent("tmFc") +
-    "=" +
-    encodeURIComponent(dateIn + time); /**/
+    "&" + encodeURIComponent("tmFc") + "=" + encodeURIComponent(time); /**/
 
   $.getJSON(url + queryParams, function (data) {
     let conttyp = data.response.body.items.item[0].wfSv;
