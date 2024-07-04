@@ -1,12 +1,12 @@
 $(document).ready(function () {
   getWeatherData();
-  getWeatherLongData();
+  // getWeatherLongData();
   getWeatherLong2Data();
 });
 
 setInterval(function () {
   getWeatherData();
-  getWeatherLongData();
+  // getWeatherLongData();
   getWeatherLong2Data();
 }, 1800000);
 
@@ -23,7 +23,7 @@ function getWeatherData(params) {
     timeIn1 = "0" + timeIn1.toString();
   }
 
-  const timeIn = timeIn0.toString() + timeIn1.toString();
+  let timeIn = timeIn0.toString() + timeIn1.toString();
 
   let time = 0;
 
@@ -398,3 +398,38 @@ function getWeatherLong2Data(params) {
     $("#contwether").html(conttyp);
   });
 }
+
+function updateClock() {
+  const now = new Date();
+  const daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"];
+  const dayOfWeek = daysOfWeek[now.getDay()];
+  const year = now.getFullYear();
+  const month = (now.getMonth() + 1).toString().padStart(2, "0");
+  const day = now.getDate().toString().padStart(2, "0");
+  const hours = now.getHours();
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const seconds = now.getSeconds().toString().padStart(2, "0");
+
+  let ampm = "AM";
+  let displayHours = hours;
+
+  if (hours >= 12) {
+    ampm = "PM";
+    displayHours = hours % 12;
+    if (displayHours === 0) {
+      displayHours = 12;
+    }
+  }
+
+  const timeString1 = `${year}년 ${month}월 ${day}일 ${dayOfWeek}요일`;
+  const timeString2 = `${displayHours}:${minutes}:${seconds} ${ampm}`;
+
+  $("#clodkkle1").text(timeString1);
+  $("#clodkkle2").text(timeString2);
+}
+
+// 매 초마다 시계 업데이트
+setInterval(updateClock, 1000);
+
+// 페이지 로드 시에도 시계 업데이트
+updateClock();
