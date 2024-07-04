@@ -421,7 +421,7 @@ function updateClock() {
     }
   }
 
-  const timeString1 = `${year}년 ${month}월 ${day}일 ${dayOfWeek}요일`;
+  const timeString1 = `${month} / ${day} ${dayOfWeek}요일`;
   const timeString2 = `${displayHours}:${minutes}:${seconds} ${ampm}`;
 
   $("#clodkkle1").text(timeString1);
