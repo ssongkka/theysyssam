@@ -27,6 +27,8 @@ function getWeatherData(params) {
 
   let time = 0;
 
+  console.log(timeIn);
+
   if (parseInt(timeIn) < 45) {
     time = "2330";
   } else if (45 <= parseInt(timeIn) && parseInt(timeIn) < 145) {
@@ -46,9 +48,9 @@ function getWeatherData(params) {
   } else if (745 <= parseInt(timeIn) && parseInt(timeIn) < 845) {
     time = "0730";
   } else if (845 <= parseInt(timeIn) && parseInt(timeIn) < 945) {
-    time = "1830";
+    time = "0830";
   } else if (945 <= parseInt(timeIn) && parseInt(timeIn) < 1045) {
-    time = "1930";
+    time = "0930";
   } else if (1045 <= parseInt(timeIn) && parseInt(timeIn) < 1145) {
     time = "1030";
   } else if (1145 <= parseInt(timeIn) && parseInt(timeIn) < 1245) {
@@ -364,9 +366,6 @@ function getWeatherLong2Data(params) {
   } else {
     time = dateIn + "1800";
   }
-
-  console.log(dateIn);
-  console.log(time);
 
   var url =
     "http://apis.data.go.kr/1360000/MidFcstInfoService/getMidFcst"; /*URL*/
