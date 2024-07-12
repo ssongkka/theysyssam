@@ -94,55 +94,6 @@ function getWeatherData(params) {
   }
 
   const dateIn = dateIn0.toString() + dateIn1.toString() + dateIn2.toString();
-  // if (parseInt(timeIn) < 40) {
-  //   time = "2300";
-  // } else if (40 <= parseInt(timeIn) && parseInt(timeIn) < 140) {
-  //   time = "0000";
-  // } else if (140 <= parseInt(timeIn) && parseInt(timeIn) < 240) {
-  //   time = "0100";
-  // } else if (240 <= parseInt(timeIn) && parseInt(timeIn) < 340) {
-  //   time = "0200";
-  // } else if (340 <= parseInt(timeIn) && parseInt(timeIn) < 440) {
-  //   time = "0300";
-  // } else if (440 <= parseInt(timeIn) && parseInt(timeIn) < 540) {
-  //   time = "0400";
-  // } else if (540 <= parseInt(timeIn) && parseInt(timeIn) < 640) {
-  //   time = "0500";
-  // } else if (640 <= parseInt(timeIn) && parseInt(timeIn) < 740) {
-  //   time = "0600";
-  // } else if (740 <= parseInt(timeIn) && parseInt(timeIn) < 840) {
-  //   time = "0700";
-  // } else if (840 <= parseInt(timeIn) && parseInt(timeIn) < 940) {
-  //   time = "1800";
-  // } else if (940 <= parseInt(timeIn) && parseInt(timeIn) < 1040) {
-  //   time = "1900";
-  // } else if (1040 <= parseInt(timeIn) && parseInt(timeIn) < 1140) {
-  //   time = "1000";
-  // } else if (1140 <= parseInt(timeIn) && parseInt(timeIn) < 1240) {
-  //   time = "1100";
-  // } else if (1240 <= parseInt(timeIn) && parseInt(timeIn) < 1340) {
-  //   time = "1200";
-  // } else if (1340 <= parseInt(timeIn) && parseInt(timeIn) < 1440) {
-  //   time = "1300";
-  // } else if (1440 <= parseInt(timeIn) && parseInt(timeIn) < 1540) {
-  //   time = "1400";
-  // } else if (1540 <= parseInt(timeIn) && parseInt(timeIn) < 1640) {
-  //   time = "1500";
-  // } else if (1640 <= parseInt(timeIn) && parseInt(timeIn) < 1740) {
-  //   time = "1600";
-  // } else if (1740 <= parseInt(timeIn) && parseInt(timeIn) < 1840) {
-  //   time = "1700";
-  // } else if (1840 <= parseInt(timeIn) && parseInt(timeIn) < 1940) {
-  //   time = "1800";
-  // } else if (1940 <= parseInt(timeIn) && parseInt(timeIn) < 2040) {
-  //   time = "1900";
-  // } else if (2040 <= parseInt(timeIn) && parseInt(timeIn) < 2140) {
-  //   time = "2000";
-  // } else if (2140 <= parseInt(timeIn) && parseInt(timeIn) < 2240) {
-  //   time = "2100";
-  // } else if (2240 <= parseInt(timeIn) && parseInt(timeIn) < 2340) {
-  //   time = "2200";
-  // }
 
   var url =
     "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst"; /*URL*/
